@@ -1,0 +1,179 @@
+/* ============================================================
+   LHM Madagascar — Layout CSS
+   ============================================================ */
+
+.layout { display: flex; min-height: 100vh; }
+
+/* ── SIDEBAR ─────────────────────────────────────────────── */
+.sidebar {
+  width: var(--sidebar-w);
+  min-height: 100vh;
+  background: linear-gradient(180deg, #091628 0%, #0f2044 60%, #1a3560 100%);
+  display: flex; flex-direction: column;
+  position: fixed; top: 0; left: 0; bottom: 0;
+  z-index: 100;
+  transition: width 0.25s ease;
+  border-right: 1px solid rgba(201,168,76,0.15);
+}
+
+.layout.sidebar-collapsed .sidebar { width: 70px; }
+
+.sidebar-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 14px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.logo { display: flex; align-items: center; overflow: hidden; }
+
+/* Logo images */
+.logo-full {
+  height: 42px;
+  max-width: 165px;
+  object-fit: contain;
+  transition: all 0.25s ease;
+}
+.logo-collapsed {
+  width: 36px; height: 36px;
+  object-fit: contain;
+  object-position: left center;
+}
+.topbar-logo {
+  height: 32px;
+  object-fit: contain;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.collapse-btn {
+  background: rgba(255,255,255,0.07);
+  color: var(--gray-300);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  width: 28px; height: 28px; min-width: 28px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; cursor: pointer;
+  flex-shrink: 0; margin-left: 6px;
+}
+.collapse-btn:hover { background: rgba(255,255,255,0.15); color: white; }
+
+.sidebar-nav {
+  flex: 1; padding: 12px 8px;
+  display: flex; flex-direction: column; gap: 2px;
+  overflow-y: auto;
+}
+
+.nav-item {
+  display: flex; align-items: center; gap: 11px;
+  padding: 9px 12px; border-radius: 9px;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none; font-size: 0.86rem; font-weight: 500;
+  white-space: nowrap; overflow: hidden;
+  transition: all 0.15s;
+}
+.nav-item:hover { background: rgba(255,255,255,0.09); color: white; }
+.nav-item.active {
+  background: linear-gradient(135deg, rgba(201,168,76,0.22), rgba(201,168,76,0.08));
+  color: var(--gold-light);
+  border-left: 3px solid var(--gold);
+  padding-left: 9px;
+}
+
+.nav-icon { font-size: 1.05rem; min-width: 22px; text-align: center; }
+.nav-label { flex: 1; }
+
+/* Séparateur nav */
+.nav-separator {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 6px 8px;
+}
+
+.sidebar-footer { padding: 10px 8px; border-top: 1px solid rgba(255,255,255,0.08); }
+
+.user-info {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px; border-radius: 9px;
+  background: rgba(255,255,255,0.05);
+  margin-bottom: 8px;
+}
+.user-avatar {
+  width: 36px; height: 36px; min-width: 36px;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; font-weight: 700; color: white; text-transform: uppercase;
+}
+.user-details { display: flex; flex-direction: column; overflow: hidden; }
+.user-name { font-size: 0.82rem; font-weight: 600; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.user-role { font-size: 0.7rem; color: var(--gold-light); opacity: 0.85; }
+
+.logout-btn {
+  width: 100%; display: flex; align-items: center; gap: 10px; justify-content: center;
+  padding: 9px; border-radius: 8px; font-size: 0.85rem; font-weight: 500;
+  color: rgba(255,255,255,0.6); background: transparent;
+}
+.logout-btn:hover { background: rgba(192,57,43,0.2); color: #e74c3c; }
+
+/* ── MAIN ────────────────────────────────────────────────── */
+.main-wrapper {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  transition: margin-left 0.25s ease;
+  display: flex; flex-direction: column; min-height: 100vh;
+}
+.layout.sidebar-collapsed .main-wrapper { margin-left: 70px; }
+
+.topbar {
+  height: var(--header-h); position: sticky; top: 0; z-index: 50;
+  background: rgba(248,247,244,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-200);
+  display: flex; align-items: center; padding: 0 24px; gap: 14px;
+  box-shadow: 0 1px 8px rgba(15,32,68,0.06);
+}
+
+.mobile-menu-btn { display: none; background: none; font-size: 1.4rem; color: var(--navy); padding: 4px 8px; border-radius: 6px; cursor: pointer; }
+.topbar-left { flex: 1; display: flex; align-items: center; gap: 10px; }
+.page-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--navy); }
+.topbar-right { display: flex; align-items: center; gap: 12px; }
+.topbar-user { display: flex; align-items: center; gap: 8px; }
+.user-avatar-sm {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 700; color: white; text-transform: uppercase;
+}
+.topbar-name { font-size: 0.88rem; font-weight: 500; color: var(--navy); }
+
+.main-content { flex: 1; padding: 26px; }
+
+/* Overlay mobile */
+.overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 99; }
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .sidebar { transform: translateX(-100%); transition: transform 0.25s ease; width: var(--sidebar-w) !important; z-index: 200; }
+  .layout.mobile-open .sidebar { transform: translateX(0); }
+  .layout.mobile-open .overlay { display: block; z-index: 199; }
+  .main-wrapper { margin-left: 0 !important; }
+  .mobile-menu-btn { display: flex !important; }
+  .topbar { padding: 0 12px; }
+  .topbar-name { display: none; }
+  .topbar-logo { display: none; }
+  .main-content { padding: 14px; }
+}
+@media (min-width: 769px) {
+  .mobile-menu-btn { display: none !important; }
+  .overlay { display: none; }
+}
+@media (max-width: 480px) {
+  .main-content { padding: 10px; }
+}
+
+/* ── PRINT ──────────────────────────────────────────────── */
+@media print {
+  .sidebar, .topbar, .no-print { display: none !important; }
+  .main-wrapper { margin-left: 0 !important; }
+  .main-content { padding: 0; }
+  body { background: white !important; }
+}
