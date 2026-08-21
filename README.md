@@ -122,17 +122,7 @@ L'application s'ouvre sur **http://localhost:3000**
 
 ---
 
-## 🔐 Comptes de démonstration
 
-| Rôle | Email | Mot de passe |
-|---|---|---|
-| Administrateur | admin@lhm-madagascar.org | Admin@1234 |
-| Direction | direction@lhm-madagascar.org | Direction@1234 |
-| RH | rh@lhm-madagascar.org | RH@1234 |
-| Stock | stock@lhm-madagascar.org | Stock@1234 |
-| Volontaires | volontaires@lhm-madagascar.org | Vol@1234 |
-
----
 
 ## 📋 Modules disponibles
 
